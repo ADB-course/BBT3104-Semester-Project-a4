@@ -1,7 +1,6 @@
 -- Write your SQL code here
 -- Function to calculate the total earnings by summing the AmountPaid from the Payment table
 DELIMITER $$
-
 CREATE FUNCTION CalculateTotalEarnings()
 RETURNS DECIMAL(10, 2)
 DETERMINISTIC
@@ -14,13 +13,12 @@ BEGIN
     
     -- Return the total earnings
     RETURN totalEarnings;
-END $$
+END$$
 
 DELIMITER ;
 
 -- Function to count the number of bookings for a specific client
 DELIMITER $$
-
 CREATE FUNCTION GetClientBookingCount(ClientID INT)
 RETURNS INT
 DETERMINISTIC
@@ -33,6 +31,7 @@ BEGIN
     
     -- Return the count of bookings
     RETURN bookingCount;
-END $$
+END$$
 
 DELIMITER ;
+
