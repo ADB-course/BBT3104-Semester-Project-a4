@@ -4,7 +4,7 @@
 | **Key**                                                               | Value                                                                                                                                                                              |
 |---------------|---------------------------------------------------------|
 | **Name of Business Chosen for the Case Study**                                                       | ? |
-| **Industry**                                                       | ? |
+| **Industry**                                                       | A4 |
 | **Group Name**                                                               | ? |
 | **Semester Duration**                                                 | 19<sup>th</sup> August - 25<sup>th</sup> November 2024                                                                                                                       |
 

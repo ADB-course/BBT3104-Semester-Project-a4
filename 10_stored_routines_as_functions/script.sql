@@ -18,7 +18,7 @@ END $$
 
 DELIMITER ;
 
---Function to count the number of bookings for a specific client
+-- Function to count the number of bookings for a specific client
 DELIMITER $$
 
 CREATE FUNCTION GetClientBookingCount(ClientID INT)

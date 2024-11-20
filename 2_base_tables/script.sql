@@ -7,12 +7,18 @@ CREATE TABLE `Employees` (
     `Role` VARCHAR(50) NOT NULL, -- Role field cannot be NULL
     `Department` VARCHAR(50) NOT NULL -- Department field cannot be NULL
 ) 
+-- Create the Client table
+CREATE TABLE `Client` (
+    `ClientID` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, -- ClientID is unique and auto-incremented
+    `FullName` VARCHAR(100) NOT NULL, -- Client's full name (cannot be NULL)
+    `ContactInfo` VARCHAR(255) UNIQUE -- Contact info (phone number, email, etc.) is unique
+) 
 
 -- Create the Rooms table
 CREATE TABLE `Rooms` (
     `RoomID` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, -- RoomID is unique and auto-incremented
     `Vacancy` BOOLEAN NOT NULL, -- Vacancy status (TRUE or FALSE)
-    `ClientID` INT, -- Foreign Key to Client table
+    `ClientID` INT UNSIGNED, -- Foreign Key to Client table
     `RoomPrice` DECIMAL(10, 2) NOT NULL, -- Room price
     FOREIGN KEY (`ClientID`) REFERENCES `Client`(`ClientID`) -- Reference to Client table
 ) 
@@ -23,24 +29,17 @@ CREATE TABLE `BookingAndReservation` (
     `DateOfBooking` DATE NOT NULL, -- Date of booking
     `ReservationLength` INT NOT NULL, -- Reservation length (positive integer)
     `Cost` DECIMAL(10, 2) NOT NULL, -- Cost for the reservation
-    `RoomID` INT, -- Foreign Key to Rooms table
-    `ClientID` INT, -- Foreign Key to Client table
+    `RoomID` INT UNSIGNED, -- Foreign Key to Rooms table
+    `ClientID` INT UNSIGNED, -- Foreign Key to Client table
     FOREIGN KEY (`RoomID`) REFERENCES `Rooms`(`RoomID`), -- Reference to Rooms table
     FOREIGN KEY (`ClientID`) REFERENCES `Client`(`ClientID`) -- Reference to Client table
 ) 
 
--- Create the Client table
-CREATE TABLE `Client` (
-    `ClientID` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, -- ClientID is unique and auto-incremented
-    `FullName` VARCHAR(100) NOT NULL, -- Client's full name (cannot be NULL)
-    `ContactInfo` VARCHAR(255) UNIQUE -- Contact info (phone number, email, etc.) is unique
-) 
-
 -- Create the Payment table
 CREATE TABLE `Payment` (
-    `PaymentID` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, -- PaymentID is unique and auto-incremented
+    `PaymentID` VARCHAR(10) NOT NULL PRIMARY KEY, -- PaymentID is unique and auto-incremented
     `Facility` VARCHAR(50) NOT NULL, -- Name of the facility (e.g., restaurant, bar)
-    `ClientID` INT, -- Foreign Key to Client table
+    `ClientID` INT UNSIGNED, -- Foreign Key to Client table
     `DateOfTransaction` TIMESTAMP NOT NULL, -- Date and time of transaction
     `AmountPaid` DECIMAL(10, 2) NOT NULL, -- Amount paid
     FOREIGN KEY (`ClientID`) REFERENCES `Client`(`ClientID`) -- Reference to Client table
@@ -48,8 +47,8 @@ CREATE TABLE `Payment` (
 
 -- Create the ClientRoom table 
 CREATE TABLE `ClientRoom` (
-    `ClientID` INT, -- Foreign Key to Client table
-    `RoomID` INT, -- Foreign Key to Rooms table
+    `ClientID` INT UNSIGNED, -- Foreign Key to Client table
+    `RoomID` INT UNSIGNED, -- Foreign Key to Rooms table
     FOREIGN KEY (`ClientID`) REFERENCES `Client`(`ClientID`), -- Reference to Client table
     FOREIGN KEY (`RoomID`) REFERENCES `Rooms`(`RoomID`) -- Reference to Rooms table
 ) 

@@ -1,5 +1,5 @@
 -- Write your SQL code here
---view to provide guests with detailed information about available rooms, their prices, and the current vacancy status
+-- view to provide guests with detailed information about available rooms, their prices, and the current vacancy status
 CREATE VIEW GuestRoomInfo AS
 SELECT 
     r.RoomID, 
